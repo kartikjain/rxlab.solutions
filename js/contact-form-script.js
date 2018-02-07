@@ -15,14 +15,14 @@ function submitForm(){
     // Initiate Variables With Form Content
     var name = $("#name").val();
     var email = $("#email").val();
-    var msg_subject = $("#msg_subject").val();
+    var msg_subject = "You have a new message";
     var message = $("#message").val();
 
 
     $.ajax({
-        type: "POST",
-        url: "php/form-process.php",
-        data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&message=" + message,
+        type: "GET",
+        url: "https://rxlab.solutions:2053/send",
+        data: "name=" + name + "&to=" + email + "&subject=" + msg_subject + "&text=" + message,
         success : function(text){
             if (text == "success"){
                 formSuccess();
